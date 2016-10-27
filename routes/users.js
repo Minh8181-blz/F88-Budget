@@ -42,8 +42,8 @@ router.post('/edit-self', function(req, res){
 
 router.post('/change-password', function(req, res){
 	userService.changePassword(req)
-	.then(function(user){
-		res.status(200).json({user:user});
+	.then(function(message){
+		res.status(200).json({message:message});
 	}, function(message){
 		res.status(400).json({message:message});
 	})

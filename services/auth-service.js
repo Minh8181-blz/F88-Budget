@@ -58,8 +58,15 @@ authService.register = function(req, callback){
 			.then(function(user){
 				if(!user)
 					reject('Invalid credentials');
-				else
-					fulfill(user);
+				else{
+					fulfill({
+						id: user.id,
+						hashedId: user.hashedId,
+					    name: user.name,
+					    email: user.email,
+					    phoneNumber: user.phoneNumber
+					});
+				}
 			})
 			.catch(function(err){
 				reject(err);

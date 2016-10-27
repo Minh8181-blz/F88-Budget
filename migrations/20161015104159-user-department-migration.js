@@ -74,8 +74,9 @@ module.exports = {
           references: {
             model: "Departments",
             key: "id",
-            onDelete : 'SET NULL'
-          }
+          },
+           onDelete : 'SET NULL',
+           onUpdate: 'CASCADE'
         } 
       )
     })
@@ -89,8 +90,9 @@ module.exports = {
           references: {
             model: "Users",
             key: "id",
-            onDelete : 'SET NULL'
-          }
+          },
+          onDelete : 'SET NULL',
+          onUpdate: 'CASCADE'
         }
       )
     })

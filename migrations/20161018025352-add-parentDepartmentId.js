@@ -10,8 +10,9 @@ module.exports = {
         references: {
           model : 'Departments',
           key: 'id',
-          onDelete : 'SET NULL'
-        }
+        },
+        onDelete : 'SET NULL',
+        onUpdate: 'CASCADE'
       }
     )
   },

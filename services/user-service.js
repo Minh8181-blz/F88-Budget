@@ -65,23 +65,17 @@ userService.deleteUser = function(req){
 
 userService.editSelf = function(req){
 	return new Promise(function(fulfill, reject){
-			console.log('IN HERE');
 			req.checkBody(selfEditRules);
 			var errors = req.validationErrors();
-			console.log(errors);
 			if(errors){
-				console.log('err validate');
 				reject(util.inspect(errors));
 			}
 			else{
-				console.log('no validation err');
-				console.log(req.payload.id);
 				User.findById(req.payload.id)
 				.then(function(user){
 					if(!user)
 						reject('Invalid user');
 					else{
-						console.log(user);
 						user.updateAttributes({
 							name: req.body.name,
 							phoneNumber: req.body.phoneNumber
@@ -89,13 +83,11 @@ userService.editSelf = function(req){
 						.then(function(user){
 							fulfill(user);
 						},function(err){
-							console.log('err');
 							reject(err);
 						})
 					}
 				})
 				.catch(function(err){
-					console.log(err);
 					reject(err);
 				})
 			}	
@@ -119,7 +111,7 @@ userService.changePassword = function(req){
 							password: bcrypt.hashSync(req.body.newPassword, bcrypt.genSaltSync())
 						})
 						.then(function(user){
-							fulfill(user);
+							fulfill('Password was changed successfully');
 						}, function(err){
 							reject(err);
 						})

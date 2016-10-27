@@ -11,6 +11,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/authenticate');
 var departments = require('./routes/departments');
+var files = require('./routes/files');
 
 var authMiddleware = require('./middlewares/auth');
 
@@ -31,11 +32,13 @@ app.use(expressValidator());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use('/files', files);
 app.use(authMiddleware.verifyToken);
 app.use('/', routes);
 app.use('/users', users);
 app.use('/authenticate', auth);
 app.use('/departments', departments);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

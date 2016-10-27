@@ -10,6 +10,9 @@ var Department = db.Department;
 /* GET home page. */
 router.get('/u', function(req, res, next) {
 	 User.findAll({
+	 	attributes:{
+	 		exclude: ['password']
+	 	},
 	 	include:[{model: Department, as: 'department'}]
 	 }).then(function(users){
 	 	res.json({users:users});
