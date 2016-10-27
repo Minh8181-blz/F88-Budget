@@ -8,6 +8,7 @@
   "dependencies": {
     "acl": "^0.4.9",
     "acl-sequelize": "^0.1.2",
+    "async": "^2.1.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
